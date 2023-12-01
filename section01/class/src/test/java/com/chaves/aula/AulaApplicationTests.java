@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.chaves.aula;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ClassApplicationTests {
+class AulaApplicationTests {
 
 	@Test
 	void contextLoads() {
