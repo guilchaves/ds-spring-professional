@@ -2,7 +2,6 @@ package br.com.chaves.desafio;
 
 import br.com.chaves.desafio.entities.Order;
 import br.com.chaves.desafio.services.OrderService;
-import br.com.chaves.desafio.services.ShippingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
