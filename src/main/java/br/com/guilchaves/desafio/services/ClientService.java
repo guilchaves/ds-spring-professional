@@ -14,11 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-
-//TODO
-// - Inserção de cliente retorna 422 e mensagens customizadas com dados inválidos
-// - Atualização de cliente retorna 422 e mensagens customizadas com dados inválidos
-
 @Service
 public class ClientService {
 
@@ -61,13 +56,13 @@ public class ClientService {
 
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
-        if(!repository.existsById(id)){
+        if (!repository.existsById(id)) {
             throw new ResourceNotFoundException("Resource not found");
         }
 
         try {
             repository.deleteById(id);
-        } catch (DataIntegrityViolationException e){
+        } catch (DataIntegrityViolationException e) {
             throw new DatabaseException("Data integrity violation: Unable to delete the resource with ID " + id +
                     " due to existing related entities.");
         }

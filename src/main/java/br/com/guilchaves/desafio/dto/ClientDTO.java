@@ -1,15 +1,19 @@
 package br.com.guilchaves.desafio.dto;
 
 import br.com.guilchaves.desafio.entities.Client;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.LocalDate;
 
 public class ClientDTO {
 
     private Long id;
+    @NotBlank(message = "Name is required")
     private String name;
     private String cpf;
     private Double income;
+    @PastOrPresent(message = "The birth date must be in the past or present")
     private LocalDate birthDate;
     private Integer children;
 
