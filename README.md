@@ -49,9 +49,10 @@ GET /clients?page=0&size=6&sort=name
 ```
 
 ###### Inserção de novo cliente
-```json
+```
 POST /clients
-
+```
+```json
 {
   "name": "Maria Silva",
   "cpf": "12345678901",
@@ -61,9 +62,10 @@ POST /clients
 }
 ```
 ###### Atualização de cliente
-```json
+```
 PUT /clients/1
-
+```
+```json
 {
   "name": "Maria Silvaaa",
   "cpf": "12345678901",
