@@ -37,6 +37,6 @@ Desafios e projetos estarão em repositórios diferentes, aqui indicado conforme
 
 ✅ [Componentes e Injeção de Dependência](https://github.com/guilchaves/java-spring-desafio-01)</br>
 ✅ [Modelo de domínio e ORM](https://github.com/guilchaves/java-spring-desafio-02)</br>
-☐ [CRUD de clientes](https://github.com/guilchaves/java-spring-desafio-03)</br>
+✅ [CRUD de clientes](https://github.com/guilchaves/java-spring-desafio-03)</br>
 ☐ Consulta vendas</br>
 ☐ Projeto Spring Boot estruturado</br>
