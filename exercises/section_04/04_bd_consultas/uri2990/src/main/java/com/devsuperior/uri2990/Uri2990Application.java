@@ -1,11 +1,15 @@
 package com.devsuperior.uri2990;
 
+import com.devsuperior.uri2990.dto.EmpregadoDeptDTO;
+import com.devsuperior.uri2990.projections.EmpregadoDeptProjection;
+import com.devsuperior.uri2990.repositories.EmpregadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.devsuperior.uri2990.repositories.EmpregadoRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class Uri2990Application implements CommandLineRunner {
@@ -19,6 +23,23 @@ public class Uri2990Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+
+		List<EmpregadoDeptProjection> list = repository.getUnassignedEmployees();
+		List<EmpregadoDeptDTO> result1 = list.stream().map(EmpregadoDeptDTO::new).collect(Collectors.toList());
+
+		System.out.println("\n***RESULTADO SQL COM NOT IN***");
+		result1.forEach(System.out::println);
+		System.out.println("\n\n");
+
+		list = repository.getUnassignedEmployees2();
+		List<EmpregadoDeptDTO> result2 = list.stream().map(EmpregadoDeptDTO::new).collect(Collectors.toList());
+		System.out.println("\n***RESULTADO SQL COM LEFT JOIN***");
+		result2.forEach(System.out::println);
+		System.out.println("\n\n");
+
+		List<EmpregadoDeptDTO> result3 = repository.getUnassignedEmployees3();
+		System.out.println("\n***RESULTADO JPQL COM NOT IN***");
+		result3.forEach(System.out::println);
+		System.out.println("\n\n");
 	}
 }
