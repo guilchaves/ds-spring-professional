@@ -1,7 +1,6 @@
 package com.devsuperior.dsmeta.controllers;
 
-import com.devsuperior.dsmeta.dto.SellerMinDTO;
-import com.devsuperior.dsmeta.projections.SellerMinProjection;
+import com.devsuperior.dsmeta.dto.SellerSummaryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,15 +32,13 @@ public class SaleController {
         return null;
     }
 
-    LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
-
     @GetMapping(value = "/summary")
-    public ResponseEntity<List<SellerMinDTO>> getSummary(
+    public ResponseEntity<List<SellerSummaryDTO>> getSummary(
             @RequestParam(name = "minDate", defaultValue = "") String minDate,
             @RequestParam(name = "maxDate", defaultValue = "") String maxDate,
             @RequestParam(name = "name", defaultValue = "") String name
     ) {
-        List<SellerMinDTO> dto = service.getSummary(minDate, maxDate, name);
+        List<SellerSummaryDTO> dto = service.getSummary(minDate, maxDate, name);
         return ResponseEntity.ok(dto);
     }
 }

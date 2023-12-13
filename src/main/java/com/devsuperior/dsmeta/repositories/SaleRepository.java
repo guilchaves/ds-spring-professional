@@ -1,7 +1,7 @@
 package com.devsuperior.dsmeta.repositories;
 
 import com.devsuperior.dsmeta.entities.Sale;
-import com.devsuperior.dsmeta.projections.SellerMinProjection;
+import com.devsuperior.dsmeta.projections.SellerSummaryProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,5 +17,5 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
                     + "WHERE tb_sales.date > :minDate AND tb_sales.date < :maxDate "
                     + "AND (:name IS NULL OR tb_seller.name LIKE CONCAT('%', :name, '%')) "
                     + "GROUP BY sellerName;")
-    List<SellerMinProjection> getSummary(LocalDate minDate, LocalDate maxDate, String name);
+    List<SellerSummaryProjection> getSummary(LocalDate minDate, LocalDate maxDate, String name);
 }

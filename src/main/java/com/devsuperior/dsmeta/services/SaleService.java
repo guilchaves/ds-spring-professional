@@ -1,9 +1,9 @@
 package com.devsuperior.dsmeta.services;
 
 import com.devsuperior.dsmeta.dto.SaleMinDTO;
-import com.devsuperior.dsmeta.dto.SellerMinDTO;
+import com.devsuperior.dsmeta.dto.SellerSummaryDTO;
 import com.devsuperior.dsmeta.entities.Sale;
-import com.devsuperior.dsmeta.projections.SellerMinProjection;
+import com.devsuperior.dsmeta.projections.SellerSummaryProjection;
 import com.devsuperior.dsmeta.repositories.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,11 +30,11 @@ public class SaleService {
     }
 
     @Transactional(readOnly = true)
-    public List<SellerMinDTO> getSummary(String minDate, String maxDate, String name) {
+    public List<SellerSummaryDTO> getSummary(String minDate, String maxDate, String name) {
         LocalDate max = parseDateOrDefault(maxDate, TODAY);
         LocalDate min = parseDateOrDefault(minDate, max.minusYears(1L));
-        List<SellerMinProjection> result = repository.getSummary(min, max, name);
-        return result.stream().map(SellerMinDTO::new).toList();
+        List<SellerSummaryProjection> result = repository.getSummary(min, max, name);
+        return result.stream().map(SellerSummaryDTO::new).toList();
     }
 
     private LocalDate parseDateOrDefault(String date, LocalDate defaultValue) {
