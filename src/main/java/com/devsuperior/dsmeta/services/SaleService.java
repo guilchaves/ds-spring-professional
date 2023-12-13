@@ -30,10 +30,10 @@ public class SaleService {
     }
 
     @Transactional(readOnly = true)
-    public List<SellerMinDTO> searchTotalSalesBySeller(String minDate, String maxDate, String name) {
+    public List<SellerMinDTO> getSummary(String minDate, String maxDate, String name) {
         LocalDate max = parseDateOrDefault(maxDate, TODAY);
         LocalDate min = parseDateOrDefault(minDate, max.minusYears(1L));
-        List<SellerMinProjection> result = repository.searchTotalSalesBySeller(min, max, name);
+        List<SellerMinProjection> result = repository.getSummary(min, max, name);
         return result.stream().map(SellerMinDTO::new).toList();
     }
 

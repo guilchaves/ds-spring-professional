@@ -41,7 +41,7 @@ public class SaleController {
             @RequestParam(name = "maxDate", defaultValue = "") String maxDate,
             @RequestParam(name = "name", defaultValue = "") String name
     ) {
-        List<SellerMinDTO> dto = service.searchTotalSalesBySeller(minDate, maxDate, name);
+        List<SellerMinDTO> dto = service.getSummary(minDate, maxDate, name);
         return ResponseEntity.ok(dto);
     }
 }

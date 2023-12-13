@@ -17,5 +17,5 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
                     + "WHERE tb_sales.date > :minDate AND tb_sales.date < :maxDate "
                     + "AND (:name IS NULL OR tb_seller.name LIKE CONCAT('%', :name, '%')) "
                     + "GROUP BY sellerName;")
-    List<SellerMinProjection> searchTotalSalesBySeller(LocalDate minDate, LocalDate maxDate, String name);
+    List<SellerMinProjection> getSummary(LocalDate minDate, LocalDate maxDate, String name);
 }
