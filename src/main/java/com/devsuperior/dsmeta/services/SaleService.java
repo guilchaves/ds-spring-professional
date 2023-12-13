@@ -1,8 +1,10 @@
 package com.devsuperior.dsmeta.services;
 
 import com.devsuperior.dsmeta.dto.SaleMinDTO;
+import com.devsuperior.dsmeta.dto.SaleReportDTO;
 import com.devsuperior.dsmeta.dto.SellerSummaryDTO;
 import com.devsuperior.dsmeta.entities.Sale;
+import com.devsuperior.dsmeta.projections.SaleReportProjection;
 import com.devsuperior.dsmeta.projections.SellerSummaryProjection;
 import com.devsuperior.dsmeta.repositories.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,14 @@ public class SaleService {
         Optional<Sale> result = repository.findById(id);
         Sale entity = result.get();
         return new SaleMinDTO(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<SaleReportDTO> getReport(String minDate, String maxDate, String name){
+        LocalDate max = parseDateOrDefault(maxDate, TODAY);
+        LocalDate min = parseDateOrDefault(minDate, max.minusYears(1L));
+        List<SaleReportProjection> result = repository.getReport(min, max, name);
+        return result.stream().map(SaleReportDTO::new).toList();
     }
 
     @Transactional(readOnly = true)
