@@ -1,7 +1,9 @@
 package br.com.guilchaves.dscommerce.services;
 
+import br.com.guilchaves.dscommerce.dto.CategoryDTO;
 import br.com.guilchaves.dscommerce.dto.ProductDTO;
 import br.com.guilchaves.dscommerce.dto.ProductMinDTO;
+import br.com.guilchaves.dscommerce.entities.Category;
 import br.com.guilchaves.dscommerce.entities.Product;
 import br.com.guilchaves.dscommerce.repositories.ProductRepository;
 import br.com.guilchaves.dscommerce.services.exceptions.DatabaseException;
@@ -61,7 +63,7 @@ public class ProductService {
         }
         try {
             repository.deleteById(id);
-        } catch (DataIntegrityViolationException e){
+        } catch (DataIntegrityViolationException e) {
             throw new DatabaseException("Data integrity violation: " + e.getMessage());
         }
     }
@@ -71,6 +73,14 @@ public class ProductService {
         entity.setDescription(dto.getDescription());
         entity.setPrice(dto.getPrice());
         entity.setImgUrl(dto.getImgUrl());
+
+        entity.getCategories().clear();
+        for (CategoryDTO catDto : dto.getCategories()) {
+            Category cat = new Category();
+            cat.setId(catDto.getId());
+            cat.setName(catDto.getName());
+            entity.getCategories().add(cat);
+        }
     }
 
 }
