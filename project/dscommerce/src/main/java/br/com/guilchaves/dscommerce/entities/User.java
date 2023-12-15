@@ -103,6 +103,13 @@ public class User implements UserDetails {
         roles.add(role);
     }
 
+    public boolean hasRole(String roleName){
+        for (Role role : roles){
+            return role.getAuthority().equals(roleName);
+        }
+        return false;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
