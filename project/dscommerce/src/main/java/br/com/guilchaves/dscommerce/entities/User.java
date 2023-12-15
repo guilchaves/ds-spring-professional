@@ -83,20 +83,6 @@ public class User implements UserDetails {
         this.birthDate = birthDate;
     }
 
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void addRole(Role role){
-        roles.add(role);
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -104,6 +90,25 @@ public class User implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
+
 
     @Override
     public String getUsername() {
