@@ -1,7 +1,7 @@
 # Curso Java Spring Professional
 
 Esse repositório contém exercícios e projetos desenvolvidos durante
-o [curso Java Spring Professinal](https://devsuperior.com.br/curso-java-spring-professional), da plataforma Dev Superior.
+o [curso Java Spring Professional](https://devsuperior.com.br/curso-java-spring-professional), da plataforma Dev Superior.
 
 Desafios e projetos estarão em repositórios diferentes, aqui indicado conforme completados.
 
