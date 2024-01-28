@@ -40,3 +40,4 @@ Desafios e projetos estarão em repositórios diferentes, aqui indicado conforme
 ✅ [CRUD de clientes](https://github.com/guilchaves/java-spring-desafio-03)</br>
 ✅ [Consulta vendas](https://github.com/guilchaves/java-spring-desafio-04)</br>
 ✅ [Projeto Spring Boot estruturado](https://github.com/guilchaves/spring-professional-dscommerce)</br>
+
